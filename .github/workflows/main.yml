@@ -26,6 +26,7 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: test
         run: |
+          sudo apt-get install expect
           expect -c "set timeout 10; spawn python3 ragNews.py; expect \"ragnews>\"; puts \"Test Passed: 'ragnews>' prompt detected.\"; expect eof"
 
 
