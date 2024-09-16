@@ -6,4 +6,3 @@ groq==0.11.0
 h11==0.14.0
 httpcore==1.0.5
 httpx==0.27.2
-expect==5.45
