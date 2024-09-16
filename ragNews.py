@@ -82,7 +82,7 @@ def extract_keywords(text, seed=None):
 
 
     system = "Extract ten keywords related to this topic or question. Remove commas and any introductory text, and present the words in a single line separated by spaces. I dont want \"Here are the keywords related to the topic:\n\n\".I dont care about anything else"
-    print("extract_keywords:")
+    # print("extract_keywords:")
     return run_llm(system,text,seed=seed)
 
 ################################################################################
@@ -142,7 +142,7 @@ def rag(text, db):
     # Extract keywords from the input text
     keywords = extract_keywords(text)
 
-    print(keywords)
+    # print(keywords)
     # Find articles related to the keywords
     articles = db.find_articles(keywords,limit=5)
     
@@ -157,7 +157,7 @@ def rag(text, db):
     # Create the full prompt by combining the user input and relevant articles
     full_prompt = f"{text}\n\nRelevant Articles:\n{article_content}"
     
-    print("RAG")
+    # print("RAG")
     # Pass the system prompt and full prompt to the LLM and return the result
     return run_llm(prompt, full_prompt)
     
@@ -264,7 +264,7 @@ class ArticleDB:
         query = ' OR '.join(query_list)
 
         # Print the constructed query
-        print('query:', query)
+        # print('query:', query)
 
         # Define the SQL query
         sql = '''
@@ -281,9 +281,9 @@ class ArticleDB:
         # Convert the result rows to dictionaries with only 'title' and 'en_summary'
         articles = [{'title': row['title'], 'text': row['text']} for row in result]
 
-        print("-------------------------------------------------------------------------------------")
-        print(articles)
-        print("-------------------------------------------------------------------------------------")
+        # print("-------------------------------------------------------------------------------------")
+        # print(articles)
+        # print("-------------------------------------------------------------------------------------")
         # Return the list of titles and summaries
         return articles
 
