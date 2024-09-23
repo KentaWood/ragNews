@@ -27,7 +27,7 @@ jobs:
       - name: test
         run: |
           sudo apt-get install expect
-          expect -c "set timeout 10; spawn python3 ragNews.py; expect \"ragnews>\"; puts \"Test Passed: 'ragnews>' prompt detected.\"; expect eof"
+          expect -c "set timeout 10; spawn python3 ragnews/__init__.py; expect \"ragnews>\"; puts \"Test Passed: 'ragnews>' prompt detected.\"; expect eof"
 
 
           
