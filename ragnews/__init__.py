@@ -33,7 +33,7 @@ client = Groq(
 )
 
 
-def run_llm(system, user, model='llama3-8b-8192', seed=None):
+def run_llm(system, user, model='llama-3.1-70b-versatile', seed=None):
     '''
     This is a helper function for all the uses of LLMs in this file.
     '''
@@ -268,13 +268,14 @@ class ArticleDB:
 
         # Define the SQL query
         sql = '''
-            SELECT rowid, rank, title, publish_date, hostname, url, en_summary, text
+            SELECT title,text
             FROM articles
             WHERE articles MATCH ?
             ORDER BY rank 
             LIMIT ?
         '''
-
+        self.db.row_factory = sqlite3.Row  # Ensures rows are dictionary-like
+        
         # Execute the query with the provided limit
         result = self.db.execute(sql, (query, limit)).fetchall()
 
